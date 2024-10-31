@@ -1,0 +1,50 @@
+biglietti_rimasti=100
+clienti = 0
+controllo = True
+while biglietti_rimasti > 0:
+    while True:
+        try:
+            biglietti_acquistati = int(input("Quanti biglietti desidera comprare? "))
+            if biglietti_acquistati > biglietti_rimasti:
+                print (f"Sono disponibili solamente {biglietti_rimasti}")
+                controllo = False
+            else:   
+                biglietti_rimasti -= biglietti_acquistati
+                controllo = True
+            break
+        except ValueError:
+            print("Inserire un numero valido.")biglietti_rimasti = 100
+clienti = 0
+
+while biglietti_rimasti > 0:
+    try:
+        biglietti_acquistati = int(input("Quanti biglietti desidera comprare? "))
+        
+        # Check if the requested tickets exceed the per-client limit
+        if biglietti_acquistati > 4:
+            print("Non è possibile acquistare più di quattro biglietti alla volta.")
+            continue  # Skip to the next iteration of the loop
+
+        # Check if there are enough tickets available
+        if biglietti_acquistati > biglietti_rimasti:
+            print(f"Sono disponibili solamente {biglietti_rimasti} biglietti.")
+            continue  # Skip to the next iteration if not enough tickets
+
+        # Process the purchase
+        biglietti_rimasti -= biglietti_acquistati
+        clienti += 1
+        print(f"Hai comprato {biglietti_acquistati} biglietti/o, ne rimangono {biglietti_rimasti}")
+        
+    except ValueError:
+        print("Inserire un numero valido.")
+
+print(f"In totale, hanno acquistato i biglietti {clienti} persone.")
+"""
+    if biglietti_acquistati > 0 and biglietti_acquistati < 5 and controllo:
+        print(f"Hai comprato {biglietti_acquistati} biglietti/o, ne rimangono {biglietti_rimasti}")
+        clienti += 1
+    if biglietti_acquistati>4:
+        print("Non è possibile acquistare più di quattro biglietti alla volta.")
+print(f"In totale, hanno acquistato i biglietti {clienti} persone")
+        
+"""
