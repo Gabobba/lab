@@ -1,0 +1,14 @@
+divisori_numero = []
+condition = True
+while condition:
+    try:
+        numero=int(input("Inserire un numero: "))
+        condition = False
+    except ValueError:
+        print("Quello inserito non è un numero.")
+        condition = True
+for i in range(2,int(numero**2)+1):
+    while numero % i == 0:
+        numero //= i
+        divisori_numero.append(i)
+print(divisori_numero)
