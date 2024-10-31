@@ -1,0 +1,35 @@
+#inserita una frase, verifica che ci siano nomi propri e li stampa 
+
+
+check = True
+conta_nomi_propri=0
+N = int(input("Indicare il numero di frasi che si vogliono analizzare: "))
+
+for l in range(N):
+    frase = input("Inserire una frase: ")
+    for k in range(len(frase)):
+        if frase[k].isupper() and (not frase[k-1].isalnum() or k == 0) and (frase[k+1].islower()):
+            check = False
+    if check:
+        print("Non sono stati trovati nomi propri.")
+    else:
+        for i in range(len(frase)):
+            if frase[i].isupper():
+                if (not frase[i-1].isalnum() or i == 0) and (frase[i+1].islower() and frase[i+1].islower() and conta_nomi_propri < 1):
+                    j = i+1
+                    is_proper_name = True
+                    while j<len(frase) and frase[j].isalpha():   #va sistemato il caso in cui nel nome sia inserito un carattere che non è una lettera
+                        if frase[j].isupper():
+                            is_proper_name =False
+                            break
+                        j += 1  
+                    if is_proper_name:   
+                        print (frase[i:j])
+                        conta_nomi_propri+=1
+                        #break      
+    #questo break permette di stampare solo il primo nome che si incontra;
+    #Nota che in questo modo è possibile stampare SOLO il primo nome, non n-primi nomi.
+        if conta_nomi_propri < 1:          #cambiare il valore numerico per indicare quanti n-primi nomi si vogliono stampare
+            print("Non è stato inserito un nome corretto")
+        else:
+            conta_nomi_propri = 0
