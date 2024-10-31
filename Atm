@@ -1,0 +1,9 @@
+PIN = 1234
+for i in range(0,3):
+    pin_inserito = int(input("Inserire il pin: "))
+    if PIN == pin_inserito:
+        print("Your pin is correct")
+        exit()
+    else:
+        print("Your pin is incorrect")
+print("Your bank card is blocked")      
