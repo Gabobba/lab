@@ -1,0 +1,63 @@
+listaDattesa = ["pippo","gina","andrea","ginevra","willy","greta","joe"]
+print("Che operazione desidera eseguire?")
+print("1.Aggiungere un nome")
+print("2.Rimuovere un nome")
+print("3.Cambiare la posizione di un nome")
+print("4.Individuare un nome")
+operazione = input("Operazione da eseguire: ")
+while not operazione.isnumeric() and operazione != "":
+    print("Operazione non accettabile: inserire un valore compreso tra 1 e 4. Che operazione desidera eseguire?")
+    print("1.Aggiungere un nome")
+    print("2.Rimuovere un nome")
+    print("3.Cambiare la posizione di un nome")
+    print("4.Individuare un nome")
+    operazione = input("Operazione da eseguire: ")
+while operazione != "" and operazione.isnumeric():
+    operazione = int(operazione)
+    if  operazione <5 and operazione>0:
+        if operazione == 1:
+            nomeRichiesto = input("Inserire il nome da aggiungere in coda: ")
+            if nomeRichiesto in listaDattesa:
+                print("Il nome è già presente nella coda")
+            else:
+                listaDattesa.append(nomeRichiesto)
+        elif operazione == 2:
+            try:
+                nomeRichiesto = input("Che nome desidera rimuovere?")
+                nomeDaRimuovere = listaDattesa.index(nomeRichiesto)
+                listaDattesa.pop(nomeDaRimuovere)
+            except ValueError:
+                print("Il nome non è presente nell'elenco")
+                
+        elif operazione == 3:
+            try: 
+                nomeRichiesto = input("Inserire il nome da spostare: ")
+                nomeDaSpostare = listaDattesa.index(nomeRichiesto)
+
+                listaDattesa.pop(nomeDaSpostare)
+                nuovaPosizione = int(input(f"Il nome si trova in posizione {nomeDaSpostare}. Inserire la nuova posizione: "))-1
+                listaDattesa.insert(nuovaPosizione, nomeRichiesto)
+            except ValueError:
+                print("Il nome richiesto non è stato trovato")
+
+        else:
+            try:
+                nomeRichiesto=input("Inserire il nome che si desidera trovare: ")
+                nomeDaTrovare = listaDattesa.index(nomeRichiesto)
+                print(f"Il nome si trova alla {nomeDaTrovare}° posizione")
+            except ValueError:
+                print("Il nome inserito non è presente nella lista")
+
+    else:
+        print("Coglione, metti un numero compreso tra uno e quattro")
+    for i in range(len(listaDattesa)):
+        print(i+1, listaDattesa[i])
+    operazione = input("Operazione da eseguire: ")
+    while not operazione.isnumeric():
+        print("Operazione non accettabile: inserire un valore compreso tra 1 e 4. Che operazione desidera eseguire?")
+        print("1.Aggiungere un nome")
+        print("2.Rimuovere un nome")
+        print("3.Cambiare la posizione di un nome")
+        print("4.Individuare un nome")
+        operazione = input("Operazione da eseguire: ")
+print("Grazie per la collaborazione")
