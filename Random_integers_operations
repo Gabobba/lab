@@ -1,0 +1,21 @@
+import random
+
+listOfRandomIntegers = []
+evenIndex = []
+oddIndex = []
+
+for i in range(10):
+    randomNumber = random.randint(0,100)
+    listOfRandomIntegers.append(randomNumber)
+print(listOfRandomIntegers)
+for i in range(len(listOfRandomIntegers)):
+    if i % 2 == 0:
+        evenIndex.append(listOfRandomIntegers[i])
+    else:
+        oddIndex.append(listOfRandomIntegers[i])
+descendingOrder = sorted(listOfRandomIntegers, reverse=True)
+firstAndLastElement = [listOfRandomIntegers[0], listOfRandomIntegers[len(listOfRandomIntegers)-1]]
+print(evenIndex)
+print(oddIndex)
+print(descendingOrder)
+print(firstAndLastElement)
