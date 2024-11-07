@@ -1,0 +1,18 @@
+numberList = []
+somma = 0
+while True:
+    try:
+        number = input("Insert a number: ")
+        if number == "":
+            break
+        number = int(number)
+        numberList.append(number)
+    except ValueError:
+        print("Please insert a whole number.")
+print(numberList)
+for i in range(len(numberList)):
+    if i % 2 == 1:
+        somma -= numberList[i]
+    else:
+        somma += numberList[i]
+print(somma)
