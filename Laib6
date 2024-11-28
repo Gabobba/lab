@@ -1,0 +1,49 @@
+#06.1.1
+def countVowels(string):
+    vocals = ["a","e","i","o","u"]
+    vocalsCounter = 0
+    for letter in string:
+        if letter.isalpha():
+            letter = letter.lower( )
+            if letter in vocals:
+                vocalsCounter += 1
+    return vocalsCounter
+
+
+#06.1.2
+def countWords(string):
+    string = string.split(" ")
+    numberOfWords = 0
+    for word in string:
+        if word == "": 
+            continue
+        else:
+            numberOfWords += 1
+    return numberOfWords
+testRun = countWords("Mary had a   little lamb")
+print(testRun)
+
+#06.2.1 ottimizzabile; 
+def quotaDiSussidio(redditoAnnuo, numeroFigli):
+    if redditoAnnuo >= 30000 and redditoAnnuo < 40000 and numeroFigli >= 3:
+        sussidio = 1000 * numeroFigli
+        print (str(sussidio) + " euro di sussidio totale")
+        return
+    elif redditoAnnuo >= 20000 and redditoAnnuo<30000 and numeroFigli >= 2:
+        sussidio = 1500 * numeroFigli
+        print( str(sussidio) + " euro di sussidio totale")
+        return
+    elif redditoAnnuo < 20000:
+        sussidio = 2000 * numeroFigli
+        print(str(sussidio) + " euro di sussidio totale")
+        return
+    else:
+        print("Non è previsto alcun aiuto economico")
+    return
+
+while True:
+    redditoAnnuo = int(input("Inserire il proprio reddito annuo: "))
+    numeroFigli = int(input("Inserire il numero dei propri figli: "))
+    if numeroFigli == -1 or redditoAnnuo == -1:
+        break
+    quotaDiSussidio(redditoAnnuo, numeroFigli)
