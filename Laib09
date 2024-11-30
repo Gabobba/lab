@@ -1,0 +1,81 @@
+#9.01.01
+def invertFirstAndLastValue(listOfIntegers):
+    firstValue = listOfIntegers[0]
+    lastValue = listOfIntegers[len(listOfIntegers)-1]
+    listOfIntegers.pop(0)
+    listOfIntegers.pop(len(listOfIntegers)-1)
+    listOfIntegers.insert(0,lastValue)
+    listOfIntegers.insert(len(listOfIntegers), firstValue)
+    return listOfIntegers
+
+def moveElementsToTheRight(listOfIntegers):
+    listOfIntegers.insert(0, listOfIntegers[len(listOfIntegers)-1])
+    listOfIntegers.pop(len(listOfIntegers)-1)
+    return listOfIntegers
+
+def changeEvenValuesToZero(listOfIntegers):
+    for i in range(len(listOfIntegers)):
+        if listOfIntegers[i] % 2 == 0:
+            listOfIntegers.insert(i, 0)
+            listOfIntegers.pop(i+1)
+    return listOfIntegers
+
+def highestValueOfTheThreeAttachedValuesExceptFisrtAndLast(listOfIntegers):
+    newList = list(listOfIntegers)
+    for i in range(1, len(listOfIntegers)-1):
+        highestValue = max(newList[i-1], newList[i+1])
+        listOfIntegers.insert(i, highestValue)
+        listOfIntegers.pop(i+1)
+    return listOfIntegers
+
+def removeMiddleValue(listOfIntegers):
+    if len(listOfIntegers) % 2== 0:
+        listOfIntegers.pop(len(listOfIntegers)//2)
+        listOfIntegers.pop(len(listOfIntegers)//2)
+    else:
+        middleValue = ((len(listOfIntegers)-1)//2)     #non bisogna aggiungere uno, poichè il primo elemento della lista ha indice zero. 
+        listOfIntegers.pop(middleValue)
+    return listOfIntegers
+
+def evenValueasOddValuesOrdered(listOfIntegers):
+    evenIntegers = []
+    oddIntegers = []
+    for value in listOfIntegers:
+        if value % 2 == 0:
+            evenIntegers.append(value)
+        else:
+            oddIntegers.append(value)
+    newList = evenIntegers + oddIntegers
+    return newList
+
+def secondHighestValue(listOfIntegers): 
+    if areThereDuplicates(listOfIntegers):
+        localMax = max(listOfIntegers)
+        while localMax == max(listOfIntegers):     #elimino il caso in cui il max sia ripetuto più volte
+            highestValue = max(listOfIntegers)
+            listOfIntegers.remove(highestValue)   
+    secondHighestValue = max(listOfIntegers)
+    return secondHighestValue
+
+def isTheListIncreasing(listOfIntegers):
+    if listOfIntegers == listOfIntegers.sort(reverse=False):
+        return True
+    return False
+
+def areThereTwoAdiacentEqualValues(listOfIntegers):
+    for i in range(len(listOfIntegers)-1):
+        if listOfIntegers[i]==listOfIntegers[i+1]:
+            return True
+    return False
+
+def areThereDuplicates(listOfIntegers):
+    for i in range(len(listOfIntegers)):
+        for j in range(1, len(listOfIntegers)-1):
+            if listOfIntegers[i]==listOfIntegers[j]:
+                return True
+    return False
+
+def evenOf(nums: list) -> list:
+    return list(filter(lambda x: x%2==0, nums))
+        
+        
