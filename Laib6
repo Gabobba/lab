@@ -47,3 +47,62 @@ while True:
     if numeroFigli == -1 or redditoAnnuo == -1:
         break
     quotaDiSussidio(redditoAnnuo, numeroFigli)
+
+
+#06.2.2 Numeri romani
+def convertToDecimalNumbers(s1: str)->list:
+    singularValues = []
+    for letter in s1:
+        if letter == "I":
+            singularValues.append(1)
+        elif letter == "V":
+            singularValues.append(5)
+        elif letter == "X":
+            singularValues.append(10)
+        elif letter == "L":
+            singularValues.append(50)
+        elif letter == "C":
+            singularValues.append(100)
+        elif letter == "D":
+            singularValues.append(500)
+        elif letter == "M":
+            singularValues.append(1000)
+        else:
+            print("Non è un numero romano: " + letter)
+            return
+    return singularValues
+    
+
+
+
+def transformToDecimalNumberFromRomanNumber(s1: str) -> int:
+    valueInDecimals: list = convertToDecimalNumbers(s1)
+
+    if valueInDecimals == None:
+        return print(">:(")
+        
+    totalSum: int = 0
+
+    for i in range(len(valueInDecimals)-1):
+        if valueInDecimals[i] >= valueInDecimals[i+1]:
+            totalSum += valueInDecimals[i]
+
+        elif valueInDecimals[i] == 0:
+            continue
+
+        else:
+            totalSum += valueInDecimals[i+1] - valueInDecimals[i]
+            valueInDecimals[i+1] = 0
+
+            
+    
+    secondToLastIndex = len(valueInDecimals)-2
+    lastIndex = len(valueInDecimals)-1
+    if valueInDecimals[secondToLastIndex] < valueInDecimals[lastIndex]:
+        return totalSum
+    else:
+        return totalSum + valueInDecimals[lastIndex]
+
+
+print(transformToDecimalNumberFromRomanNumber("MMCDXCIV"))
+        
