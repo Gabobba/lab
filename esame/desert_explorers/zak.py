@@ -68,8 +68,8 @@ def madeItToOasis(survivor: dict, oases: list) -> bool:
 
 
 if __name__ == '__main__':
-    desertData = parseData("./esercitazione_db/desert.csv")
-    survivorsData = parseData("./esercitazione_db/survivors.txt")
+    desertData = parseData("./database/desert.csv")
+    survivorsData = parseData("./database/survivors.txt")
 
     desert = desertData
     oases = []
